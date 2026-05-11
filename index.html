@@ -523,7 +523,7 @@ async function autoDetectRooms(){
   btn.disabled=true;btn.textContent='🔍 Analyserer rom...';
   try{
     var res=await apiCall({
-      model:'claude-sonnet-4-20250514',max_tokens:2000,
+      model:'claude-sonnet-4-6',max_tokens:2000,
       system:'Du analyserer plantegninger. Returner KUN gyldig JSON, ingen markdown.\n\nFormat:\n{"rooms":[{"name":"string","type":"meeting|social|office|corridor|other","estimatedWidth":number,"estimatedLength":number,"description":"kort norsk beskrivelse"}]}',
       messages:[{role:'user',content:[
         {type:'image',source:{type:'base64',media_type:imgType,data:imgB64}},
@@ -653,7 +653,7 @@ async function runAnalysis(){
 
   try{
     setPStep(2);
-    var res=await apiCall({model:'claude-sonnet-4-20250514',max_tokens:4096,system:sys,messages:[{role:'user',content:[
+    var res=await apiCall({model:'claude-sonnet-4-6',max_tokens:4096,system:sys,messages:[{role:'user',content:[
       {type:'image',source:{type:'base64',media_type:imgType,data:imgB64}},
       {type:'text',text:usr}
     ]}]});
